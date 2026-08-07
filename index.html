@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ملازم مذاكرة الفقه | برنامج متين العلمي — المستوى الثاني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2c2013;
+    --paper:#fbf6ea;
+    --paper-2:#f2e6c9;
+    --gold:#b8863a;
+    --gold-soft:#e8d19b;
+    --green-deep:#123c47;
+    --green:#1f6270;
+    --green-soft:#dcedf0;
+    --terra:#7a2e38;
+    --line: rgba(18,60,71,0.16);
+    --shadow: 0 10px 30px rgba(18,60,71,0.10);
+    --radius: 16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 10% 0%, rgba(184,134,46,0.10), transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(28,92,68,0.10), transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Cairo', sans-serif;
+    line-height:1.9;
+    min-height:100vh;
+  }
+  .bismillah-band{
+    background: linear-gradient(180deg, var(--green-deep), var(--green));
+    color: var(--gold-soft);
+    text-align:center;
+    padding:10px 12px;
+    font-family:'Amiri', serif;
+    font-size:1.05rem;
+    letter-spacing:.5px;
+  }
+  header.hero{
+    position:relative;
+    padding: 44px 22px 36px;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(18,60,71,0.05), transparent),
+      var(--paper);
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  header.hero::before, header.hero::after{
+    content:"";
+    position:absolute;
+    top:-60px;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border: 1px solid var(--gold-soft);
+    opacity:.35;
+  }
+  header.hero::before{ right:-90px; }
+  header.hero::after{ left:-90px; top: 40px; border-color: var(--green-soft); opacity:.5; }
+  .eyebrow{
+    display:inline-block;
+    font-size:.8rem;
+    letter-spacing:3px;
+    color:var(--gold);
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1.title{
+    font-family:'Aref Ruqaa','Amiri', serif;
+    font-weight:700;
+    font-size:clamp(2rem, 5vw, 3.1rem);
+    margin:0 0 8px;
+    color:var(--green-deep);
+  }
+  .subtitle{
+    color:#5a5245;
+    font-size:1.05rem;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .ornament{
+    text-align:center;
+    padding:16px;
+    font-family:'Amiri', serif;
+    font-size:1.3rem;
+    color:var(--gold);
+    letter-spacing:6px;
+    opacity:.6;
+  }
+  .container{ max-width:880px; margin:0 auto; padding:8px 20px 60px; }
+  .section-title{
+    font-family:'Aref Ruqaa','Amiri',serif;
+    font-size:1.3rem;
+    color:var(--green-deep);
+    margin:20px 4px 16px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--gold-soft);
+  }
+  .cards{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:36px; }
+  @media(max-width:600px){ .cards{ grid-template-columns:1fr; } }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    box-shadow:var(--shadow);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 14px 34px rgba(18,60,71,0.16); }
+  .card-top{
+    background:linear-gradient(135deg, var(--green-deep), var(--green));
+    padding:20px 20px 16px;
+    color:#fff;
+    position:relative;
+  }
+  .card-num{
+    position:absolute;
+    top:12px;
+    left:14px;
+    background:rgba(255,255,255,0.15);
+    border-radius:8px;
+    padding:2px 10px;
+    font-size:.7rem;
+    font-weight:700;
+  }
+  .card-badge{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--green-deep);
+    font-size:.7rem;
+    font-weight:700;
+    padding:2px 10px;
+    border-radius:12px;
+    margin-bottom:8px;
+  }
+  .card-title-text{
+    font-family:'Aref Ruqaa','Amiri',serif;
+    font-size:1.35rem;
+    font-weight:700;
+  }
+  .card-body{ padding:16px 18px; flex:1; }
+  .card-topics{ list-style:none; }
+  .card-topics li{
+    font-size:.85rem;
+    color:#6b6252;
+    padding:5px 0;
+    border-bottom:1px solid var(--paper-2);
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .card-topics li:last-child{ border-bottom:none; }
+  .card-topics .dot{ color:var(--green); font-size:1rem; line-height:1.3; flex-shrink:0; }
+  .card-footer{
+    padding:12px 18px;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:.75rem;
+    color:#6b6252;
+  }
+  .card-cta{
+    background:var(--terra);
+    color:#fff;
+    font-size:.75rem;
+    font-weight:700;
+    padding:5px 14px;
+    border-radius:20px;
+  }
+  .note-bar{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 22px;
+    font-size:.9rem;
+    line-height:1.9;
+    color:#6b6252;
+    margin-bottom:20px;
+  }
+  .note-bar strong{ color:var(--green-deep); }
+  .footer{
+    text-align:center;
+    padding:26px;
+    font-size:.8rem;
+    color:#8a8170;
+    border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<div class="bismillah-band">بسم الله الرحمن الرحيم</div>
+
+<header class="hero">
+  <span class="eyebrow">برنامج متين العلمي — المستوى الثاني</span>
+  <h1 class="title">ملازم مذاكرة<br>مادة الفقه</h1>
+  <p class="subtitle">ملازم تفاعلية منظّمة لمذاكرة محاضرات الفقه — كل ملزمة تحتوي شرحًا مبوّبًا واختبارًا ذاتيًا بنظام صح/خطأ، اختيار من متعدد، ومسائل فقهية تطبيقية.</p>
+</header>
+
+<div class="ornament">— ❧ —</div>
+
+<div class="container">
+
+  <div class="section-title">اللقاءات المتاحة</div>
+
+  <div class="cards">
+
+    <!-- اللقاء الأول والثاني -->
+    <a href="lqf1.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠١-٠٢</div>
+        <div class="card-badge">افتتاح الدورة</div>
+        <div class="card-title-text">اللقاء الأول والثاني</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> آداب طلب العلم</li>
+          <li><span class="dot">•</span> تعريف الزكاة وشروطها</li>
+          <li><span class="dot">•</span> أنواع الأموال الزكوية</li>
+          <li><span class="dot">•</span> زكاة الحلي، والديون وأحكام متفرقة</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الثالث -->
+    <a href="lqf3.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٣</div>
+        <div class="card-badge">أهل الزكاة</div>
+        <div class="card-title-text">اللقاء الثالث</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> الأصناف الثمانية لأهل الزكاة</li>
+          <li><span class="dot">•</span> الرقاب والغارمون ومسألة دين الميت</li>
+          <li><span class="dot">•</span> في سبيل الله وابن السبيل</li>
+          <li><span class="dot">•</span> من لا يجوز دفع الزكاة إليهم</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الرابع -->
+    <a href="lqf4.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٤</div>
+        <div class="card-badge">زكاة الفطر ومدخل الصيام</div>
+        <div class="card-title-text">اللقاء الرابع</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> زكاة الفطر: تعريفها ودليلها ومقدارها</li>
+          <li><span class="dot">•</span> وقت وجوبها وأوقات إخراجها وحكم تأخيرها</li>
+          <li><span class="dot">•</span> كتاب الصيام: تعريفه وحكمه وشروط وجوبه</li>
+          <li><span class="dot">•</span> النية في الصيام ومسألة تجديدها</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الخامس -->
+    <a href="lqf5.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٥</div>
+        <div class="card-badge">مفسدات الصوم</div>
+        <div class="card-title-text">اللقاء الخامس</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> الجماع وكفارته، وإنزال المني</li>
+          <li><span class="dot">•</span> الأكل والشرب عمدًا، والسعوط والحقن والإبر</li>
+          <li><span class="dot">•</span> إخراج الدم، والتقيؤ عمدًا</li>
+          <li><span class="dot">•</span> دم الحيض والنفاس، وقطرة العين والأذن والاكتحال</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء السادس -->
+    <a href="lqf6.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٦</div>
+        <div class="card-badge">الرخص في الفطر ونوازل الصيام</div>
+        <div class="card-title-text">اللقاء السادس</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> المريض بأحواله، والحامل والمرضع، والمسافر</li>
+          <li><span class="dot">•</span> مسألة الإمساك بقية اليوم لمن زال عذره</li>
+          <li><span class="dot">•</span> نوازل: غسيل الكلى، وبخاخ الربو</li>
+          <li><span class="dot">•</span> نوازل: أقراص تحت اللسان، والبخور، وإبر الأنسولين</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء السابع -->
+    <a href="lqf7.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٧</div>
+        <div class="card-badge">كتاب الحج: تعريفه وشروط وجوبه</div>
+        <div class="card-title-text">اللقاء السابع</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> تعريف الحج وحكمه ومنزلته</li>
+          <li><span class="dot">•</span> العمرة: تعريفها وحكمها</li>
+          <li><span class="dot">•</span> شروط وجوب الحج: المسلم والحر والمكلف</li>
+          <li><span class="dot">•</span> شرط القادر وأصنافه الأربعة</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الثامن -->
+    <a href="lqf8.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٨</div>
+        <div class="card-badge">شرط المحرم، وأركان الحج ومواقيته</div>
+        <div class="card-title-text">اللقاء الثامن</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> شرط وجود المحرم للمرأة ومن هو محرمها</li>
+          <li><span class="dot">•</span> مسائل: أخت الزوجة، ومنع الزوج من الحج</li>
+          <li><span class="dot">•</span> أركان الحج وواجباته، ومواقيته الزمانية والمكانية</li>
+          <li><span class="dot">•</span> الإحرام، وأنواع المناسك الثلاثة</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء التاسع -->
+    <a href="lqf9.html" class="card">
+      <div class="card-top">
+        <div class="card-num">٠٩</div>
+        <div class="card-badge">إكمال كتاب الحج: هدي المتمتع ومحظورات الإحرام</div>
+        <div class="card-title-text">اللقاء التاسع</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> هدي المتمتع والقارن وبدله عند العجز</li>
+          <li><span class="dot">•</span> محظورات الإحرام التسعة بالتفصيل</li>
+          <li><span class="dot">•</span> آداب اجتناب الرفث والفسوق والجدال</li>
+          <li><span class="dot">•</span> أعمال يوم التروية</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء العاشر -->
+    <a href="lqf10.html" class="card">
+      <div class="card-top">
+        <div class="card-num">١٠</div>
+        <div class="card-badge">يوم عرفة، والدفع إلى مزدلفة وأعمال يوم النحر</div>
+        <div class="card-title-text">اللقاء العاشر</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> يوم عرفة: حدوده ووقته وأحكام الوقوف والدعاء</li>
+          <li><span class="dot">•</span> الدفع إلى مزدلفة والمبيت فيها</li>
+          <li><span class="dot">•</span> أخذ حصى الجمار، ورمي جمرة العقبة</li>
+          <li><span class="dot">•</span> ترتيب أعمال يوم النحر، والأخطاء الشائعة في الرمي</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الحادي عشر -->
+    <a href="lqf11.html" class="card">
+      <div class="card-top">
+        <div class="card-num">١١</div>
+        <div class="card-badge">صفة الطواف والسعي</div>
+        <div class="card-title-text">اللقاء الحادي عشر</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> صفة الطواف: استلام الحجر الأسود وسير الأشواط</li>
+          <li><span class="dot">•</span> شروط صحة الطواف الثلاثة عشر</li>
+          <li><span class="dot">•</span> صفة السعي بين الصفا والمروة</li>
+          <li><span class="dot">•</span> مسألة سعي المرأة، وشروط صحة السعي</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+    <!-- اللقاء الثاني عشر -->
+    <a href="lqf12.html" class="card">
+      <div class="card-top">
+        <div class="card-num">١٢</div>
+        <div class="card-badge">أحكام الحج</div>
+        <div class="card-title-text">اللقاء الثاني عشر</div>
+      </div>
+      <div class="card-body">
+        <ul class="card-topics">
+          <li><span class="dot">•</span> المبيت بمنى وأيام التشريق</li>
+          <li><span class="dot">•</span> وقت رمي الجمرات وصفته وترتيبه</li>
+          <li><span class="dot">•</span> نيابة العاجز، والتعجل والتأخر</li>
+          <li><span class="dot">•</span> أحكام الحائض وطواف الوداع</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <span>٦٠ سؤالًا تفاعليًا</span>
+        <span class="card-cta">افتح الملزمة ←</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="note-bar">
+    <strong>ملحوظة:</strong> اللقاءات المتاحة حاليًا في هذه الحزمة هي جميع اللقاءات من الأول إلى الثاني عشر (اللقاء الأول والثاني معًا في ملف واحد، ثم اللقاء الثالث حتى الثاني عشر). عند إضافة ملازم لقاءات أخرى، يمكن وضعها في نفس المجلد وإضافة كرت لها هنا بنفس الطريقة.
+  </div>
+
+</div>
+
+<div class="footer">
+  ملازم مذاكرة مادة الفقه &nbsp;•&nbsp; برنامج متين العلمي — المستوى الثاني
+</div>
+
+</body>
+</html>
