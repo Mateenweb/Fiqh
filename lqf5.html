@@ -1152,5 +1152,21 @@ function resetQuiz(){
 buildQuiz();
 </script>
 
+
+<!-- PDF download button -->
+<style>
+.pdf-btn{position:fixed;bottom:24px;left:24px;background:#2f6b4f;color:#fff;border:none;border-radius:50px;padding:14px 22px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:1000}
+.pdf-btn:hover{filter:brightness(1.1)}
+body:has(#page-quiz.active) .pdf-btn{display:none}
+@media print{
+ .pdf-btn,.tabs,.lqf-nav,.footer-nav,.quiz-fixed-bar,#page-quiz{display:none!important}
+ .page{display:block!important;opacity:1!important;break-inside:auto}
+ body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<button class="pdf-btn" onclick="downloadPDF()"><span>⬇</span> تحميل PDF</button>
+<script>
+function downloadPDF(){const b=document.querySelector('.pdf-btn');b.style.display='none';window.print();setTimeout(()=>{b.style.display='flex';},1000);}
+</script>
 </body>
 </html>
